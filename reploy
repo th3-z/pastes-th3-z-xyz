@@ -1,0 +1,39 @@
+#! /usr/bin/python3
+
+'''
+Requirements:
+    - python3, installed to /usr/local/bin/python3
+    - rsync, installed to $PATH
+
+Todo:
+    - Desktop integration
+    - Pipe rsync -v into an output beautifier
+
+Warning! This tool will delete files from REMOTE_HOST:DEPLOY_PATH that don't
+exist in the working directory. Backup before first run.
+
+Dotfiles are ecluded by default, see `.rexclude`.
+
+'''
+
+from os import system, getcwd, path
+
+USERNAME = "the_z"
+REMOTE_HOST = "th3-z.xyz"
+DEPLOY_PATH = "/srv/www/"
+DEPLOY_PATH += "/" + path.basename(getcwd())
+
+EXCLUDE_FILE = ".rexclude"
+RSYNC_FLAGS = "-azP --delete --info=NONE,COPY,DEL,MISC,NAME,REMOVE " \
+              "--exclude-from {} -e ssh ./* {}@{}:{}" \
+              .format(EXCLUDE_FILE, USERNAME, REMOTE_HOST, DEPLOY_PATH)
+
+
+def main():
+    system("rsync {}".format(RSYNC_FLAGS))
+    print("\nSync complete!")
+
+
+if __name__ == "__main__":
+    main()
+ 
