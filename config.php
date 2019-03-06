@@ -2,7 +2,7 @@
 $base_url = "https://pastes.th3-z.xyz/";
 $webroot = "/srv/www/pastes-th3-z-xyz/";
 $paste_path = "pastes/";
-$daily_paste_limit = 35;
+$daily_paste_limit = 25;
 $log_file = $webroot . "../pastes-th3-z-xyz.log";
 
 // Enable all errors, configure log, disable display

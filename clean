@@ -1,4 +1,4 @@
 #!/bin/bash
 
-find /srv/www/pastes-th3-z-xyz/pastes/* -type f \( ! -iname ".mnt_token" \) -mtime +1 -exec rm {} \;
+find /srv/www/pastes-th3-z-xyz/pastes -type f \( ! -iname ".mnt_token" \) -mtime +1 -exec rm -f {} \;
 

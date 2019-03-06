@@ -1,6 +1,7 @@
 <?php
-include "config.php";
+require_once "config.php";
 
+$page_name = "Pastes";
 $request = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 
 $access = "[ACCESS]"
@@ -12,16 +13,14 @@ if (!empty($_SERVER['HTTP_REFERER']))
     $access .= "\n\tReferer: {$_SERVER['HTTP_REFERER']}";
 
 error_log($access);
-
-
 ?>
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>PASTES</title>
-	</head>
+    <?php
+        include "includes/head.php";
+    ?>
 	
-	<body>
+	<body style="font-family: monospace;">
         <h1>pastes.th3-z.xyz</h1>
         <p>Pastes will be deleted after 24 hours!</p>
 
@@ -30,6 +29,11 @@ error_log($access);
             <br/>
             <input type="submit" value="New Paste">
         </form>
+       
+        <?php
+        include "recent.php";
+        ?>
+
 	</body>
 
 </html>

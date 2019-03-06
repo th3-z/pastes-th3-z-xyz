@@ -1,6 +1,6 @@
 <?php
-include "config.php";
-include "utils.php";
+require_once "config.php";
+require_once "includes/utils.php";
 
 $paste = $_POST['paste'];
 if (empty($paste)) die("Empty paste.");
@@ -10,7 +10,7 @@ $filepath = $webroot.$paste_path;
 $filename = $ip_id.shafrag($paste);
 
 if (count_pastes($filepath, $ip_id) > $daily_paste_limit)
-    die("Exceeded paste limit.");
+    die("Error, exceeded paste limit.");
 
 # Log valid requests
 $paste_log = "[NEW_PASTE]"
@@ -19,11 +19,11 @@ $paste_log = "[NEW_PASTE]"
 error_log($paste_log);
 
 # The existance of this file means pastes_path is mounted
-if (!file_exists($filepath.".mnt_token")) die;
+if (!file_exists($filepath.".mnt_token")) die("Error, resource not mounted.");
 
 # Save paste, if theres available space
 $file = fopen($filepath.$filename, "w")
-        or die("Couldn't open file.");
+        or die("Error, couldn't open file.");
 
 fwrite($file, $paste);
 fclose($file);
