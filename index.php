@@ -20,7 +20,9 @@ error_log($access);
         include "includes/head.php";
     ?>
 	
-	<body style="font-family: monospace;">
+    <body>
+        <?php include "header.html"; ?>
+        <div style="font-family: monospace;">
         <h1>pastes.th3-z.xyz</h1>
         <p>Pastes will be deleted after 24 hours!</p>
 
@@ -34,6 +36,9 @@ error_log($access);
         include "recent.php";
         ?>
 
+        </div>
+
+        <?php include "footer.html"; ?>
 	</body>
 
 </html>
