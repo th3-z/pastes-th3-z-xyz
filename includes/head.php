@@ -1,5 +1,6 @@
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache"/>
     <title>TH3-Z - <?=$page_name?></title>
     <?php if ($page_name=="Articles"): ?>
     <script type="text/javascript">
