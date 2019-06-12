@@ -19,6 +19,6 @@
     <?php endif ?>
     <meta name="description" content="No desc">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="<?=$base_url?>css/style.css">
+    <link rel="stylesheet" href="https://th3-z.xyz/css/style.css">
 </head>
 
